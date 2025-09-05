@@ -1,36 +1,36 @@
-# PWA Service Worker Listeners
+# Service Worker Listeners
 
-Este es un proyecto de demostración de una Progressive Web App (PWA) que utiliza un Service Worker para interceptar y modificar peticiones de red.
+This project is a simple Progressive Web App (PWA) created to demonstrate the functionality of different event listeners in a Service Worker.
 
-## Descripción
+## Features
 
-El proyecto consiste en una página web simple que muestra una imagen. Sin embargo, un Service Worker intercepta la petición para esa imagen y la reemplaza por una imagen diferente.
+The Service Worker in this project (`sw.js`) is configured to listen for the following events:
 
-Esto demuestra el poder de los Service Workers para controlar las peticiones de red y modificar las respuestas, lo que es una característica fundamental de las PWAs para habilitar funcionalidades offline y mejorar el rendimiento.
+- `install`: Triggered when the Service Worker is first installed. This is where assets can be pre-cached.
+- `activate`: Triggered when the Service Worker is activated. This is a good place to clean up old caches.
+- `fetch`: Triggered for every network request made by the page. This allows for intercepting requests and implementing caching strategies.
+- `sync`: Triggered when the browser regains connectivity. This is used for background synchronization tasks.
+- `push`: Triggered when a push notification is received from a server.
 
-## Uso
+## Project Structure
 
-Para ejecutar este proyecto, simplemente sirve los archivos en un servidor web local. No se requiere ninguna compilación o dependencia.
+- `index.html`: The main HTML file for the PWA.
+- `sw.js`: The Service Worker file containing all the event listeners.
+- `js/app.js`: The main JavaScript file that registers the Service Worker.
+- `css/style.css`: Basic styles for the application.
+- `img/`: Contains the images used in the application.
 
-1.  Clona este repositorio.
-2.  Inicia un servidor web en el directorio del proyecto. Por ejemplo, puedes usar `python -m http.server` o la extensión "Live Server" en Visual Studio Code.
-3.  Abre tu navegador y navega a la dirección de tu servidor local (por ejemplo, `http://localhost:8000`).
+## How to Use
 
-Cuando la página cargue, verás que la imagen que se muestra es `main-patas-arriba.jpg` en lugar de `main.jpg`, gracias al Service Worker.
+To run this project, you need to serve the files using a local web server. A simple way to do this is by using Python's built-in HTTP server.
 
-## Estructura de Archivos
+1.  Navigate to the project's root directory in your terminal.
+2.  Run the following command:
 
-```
-.
-├── css
-│   └── style.css
-├── img
-│   ├── main-patas-arriba.jpg
-│   └── main.jpg
-├── js
-│   └── app.js
-├── .jshintrc
-├── index.html
-├── README.md
-└── sw.js
-```
+    ```bash
+    python -m http.server
+    ```
+
+3.  Open your web browser and go to `http://localhost:8000`.
+
+You can then open the browser's developer tools to see the console logs from the Service Worker.
